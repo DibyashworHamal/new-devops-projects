@@ -31,4 +31,5 @@ volumes:
 
 networks:
   my-network:
+    name: devops-shared-network
     driver: bridge
