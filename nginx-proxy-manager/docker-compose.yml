@@ -1,0 +1,23 @@
+services:
+  npm:
+    image: ${NPM_IMAGE}
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+
+    ports:
+      - "${HOST_PORT}:${CONTAINER_PORT}"
+      - "${ADMIN_HOST_PORT}:${ADMIN_CONTAINER_PORT}"
+
+    env_file:
+      - .env
+
+    volumes:
+      - ./data:/data
+
+    networks:
+      - npm-shared-network
+
+networks:
+  npm-shared-network:
+    name: devops-shared-network
+    external: true
