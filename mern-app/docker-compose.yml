@@ -4,8 +4,8 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: backend
-    ports:
-      - "5000:5000"
+    expose:
+      - "5000"
     env_file:
       - .env
     restart: unless-stopped
@@ -17,8 +17,8 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     container_name: frontend
-    ports:
-      - "3000:80"
+    expose:
+      - "80"
     depends_on:
       - backend
     restart: unless-stopped
