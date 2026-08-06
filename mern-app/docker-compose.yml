@@ -1,15 +1,4 @@
 services:
-  mongodb:
-    image: ${IMAGE}
-    container_name: mongodb
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-    restart: unless-stopped
-    networks:
-      - mern-network
-
   backend:
     build:
       context: ./backend
@@ -31,7 +20,7 @@ services:
       dockerfile: Dockerfile
     container_name: frontend
     ports:
-      - "3000:80" # Maps port 3000 on your PC to port 80 (Nginx) in the container
+      - "3000:80"
     depends_on:
       - backend
     restart: unless-stopped
@@ -40,6 +29,5 @@ services:
 
 networks:
   mern-network:
-
-volumes:
-  mongo-data:
+    name: devops-shared-network
+    external: true
