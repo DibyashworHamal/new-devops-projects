@@ -55,8 +55,8 @@ services:
     env_file:
       - .env
 
-    ports:
-      - "${MONGO_EXPRESS_PORT}:${MONGO_EXPRESS_CONTAINER_PORT}"
+    expose:
+      - "${MONGO_EXPRESS_PORT}"
 
     networks:
       - shared-network
