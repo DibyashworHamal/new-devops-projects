@@ -18,17 +18,7 @@ FROM nginx:alpine
 # Copy the built files from Stage 1 into Nginx's HTML serving folder
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Note: Because you are using React Router, you need to configure Nginx 
-# to redirect all traffic to index.html so routes like /video/123 don't throw a 404.
-# We will create a simple inline configuration for this:
-RUN echo $'server { \n\
-    listen 80; \n\
-    location / { \n\
-        root /usr/share/nginx/html; \n\
-        index index.html index.htm; \n\
-        try_files $uri $uri/ /index.html; \n\
-    } \n\
-}' > /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80 for Nginx
 EXPOSE 80
