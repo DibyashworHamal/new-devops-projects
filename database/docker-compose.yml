@@ -21,8 +21,8 @@ services:
     environment:
       PMA_HOST: ${DB_HOST}
       PMA_PORT: ${DB_PORT}
-    ports:
-      - "8080:80"
+    expose:
+      - "80"
     networks:
       - shared-network
 
