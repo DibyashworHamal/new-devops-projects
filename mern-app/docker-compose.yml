@@ -29,7 +29,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: youtube-clone-frontend
+    container_name: frontend
     ports:
       - "3000:80" # Maps port 3000 on your PC to port 80 (Nginx) in the container
     depends_on:
