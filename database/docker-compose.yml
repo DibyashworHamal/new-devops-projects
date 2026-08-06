@@ -39,6 +39,7 @@ services:
 
     volumes:
       - mongo-data:/data/db
+      - mongo-config:/data/configdb
 
     networks:
       - shared-network
@@ -63,6 +64,7 @@ services:
 volumes:
   mysql_data:
   mongo-data:
+  mongo-config:
 
 networks:
   shared-network:
