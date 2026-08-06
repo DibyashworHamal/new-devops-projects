@@ -5,8 +5,8 @@ services:
       dockerfile: Dockerfile
     container_name: ebs-java-app
     restart: on-failure
-    ports:
-      - "${HOST_PORT}:${CONTAINER_PORT}"
+    expose:
+      - "${CONTAINER_PORT}"
     
     # Injects ALL variables from .env into the container for Spring Boot to pick up
     env_file:
